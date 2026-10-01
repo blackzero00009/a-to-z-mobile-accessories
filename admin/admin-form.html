@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Add / edit admin user — A to Z Mobile Accessories admin." />
+  <title>Add Admin — A to Z Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    input:disabled, select:disabled { opacity: 0.45; background: var(--soft); cursor: not-allowed; }
+    .form-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+    .form-actions .form-note { margin: 0; flex: 1; }
+    .form-note.warn { color: var(--coral); }
+  </style>
+</head>
+<body data-page="admin-form">
+
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../logo.png" alt="A to Z Mobile Accessories">
+      </a>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a href="index.html" data-nav="dashboard">Dashboard</a>
+        <a href="products.html" data-nav="products">Products</a>
+        <a href="categories.html" data-nav="categories">Categories</a>
+        <a href="inventory.html" data-nav="inventory">Inventory</a>
+        <a href="repairs.html" data-nav="repairs">Repairs</a>
+        <a href="approvals.html" data-nav="approvals">Approvals</a>
+        <a href="audit-log.html" data-nav="audit">Audit Log</a>
+        <a href="admins.html" data-nav="admins" class="active">Admins</a>
+      </nav>
+      <a class="admin-logout" href="login.html">Logout</a>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="afPageTitle">Add Admin</h1>
+        <div class="admin-user">
+          <span class="admin-avatar">…</span>
+          <span>Loading…</span>
+        </div>
+      </div>
+
+      <main class="admin-content">
+        <div class="panel">
+          <div class="panel-head">
+            <h2 id="afPanelTitle">New admin user</h2>
+            <a class="btn btn-outline btn-sm" href="admins.html">← Back to Admins</a>
+          </div>
+          <div class="panel-body">
+
+            <form id="adminForm" class="form-grid">
+
+              <div class="field field-full">
+                <label for="afEmail">Email *</label>
+                <input id="afEmail" type="email" required placeholder="e.g. name@a2zshop.in" autocomplete="off" />
+                <p class="form-note" style="margin-top:6px;">This will be their login email. Cannot be changed later.</p>
+              </div>
+
+              <div class="field field-full" id="afPasswordWrap">
+                <label for="afPassword">Password *</label>
+                <input id="afPassword" type="password" required minlength="6" placeholder="Minimum 6 characters" autocomplete="new-password" />
+              </div>
+
+              <div class="field field-full">
+                <label for="afName">Full Name *</label>
+                <input id="afName" type="text" required placeholder="e.g. Rahul Sharma" autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label for="afRole">Role *</label>
+                <select id="afRole" required>
+                  <option value="staff">Staff</option>
+                  <option value="shop_owner">Shop Owner</option>
+                  <option value="web_owner">Web Owner</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="afStatus">Status</label>
+                <select id="afStatus">
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+              </div>
+
+              <div class="field-full form-actions">
+                <button class="btn btn-dark" type="submit" id="afSubmit">Add Admin</button>
+                <a class="btn btn-outline" href="admins.html">Cancel</a>
+                <p id="afNote" class="form-note" aria-live="polite"></p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script src="../assets/js/admin-form.js"></script>
+</body>
+</html>

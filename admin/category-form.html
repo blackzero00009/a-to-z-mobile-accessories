@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Add / edit category — A to Z Mobile Accessories admin." />
+  <title>Add Category — A to Z Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    input:disabled, select:disabled { opacity: 0.45; background: var(--soft); cursor: not-allowed; }
+    .form-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+    .form-actions .form-note { margin: 0; flex: 1; }
+  </style>
+</head>
+<body data-page="category-form">
+
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../logo.png" alt="A to Z Mobile Accessories">
+      </a>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a href="index.html" data-nav="dashboard">Dashboard</a>
+        <a href="products.html" data-nav="products">Products</a>
+        <a href="categories.html" data-nav="categories" class="active">Categories</a>
+        <a href="inventory.html" data-nav="inventory">Inventory</a>
+        <a href="repairs.html" data-nav="repairs">Repairs</a>
+        <a href="approvals.html" data-nav="approvals">Approvals</a>
+        <a href="audit-log.html" data-nav="audit">Audit Log</a>
+        <a href="admins.html" data-nav="admins">Admins</a>
+      </nav>
+      <a class="admin-logout" href="login.html">Logout</a>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1 id="cfPageTitle">Add Category</h1>
+        <div class="admin-user">
+          <span class="admin-avatar">…</span>
+          <span>Loading…</span>
+        </div>
+      </div>
+
+      <main class="admin-content">
+        <div class="panel">
+          <div class="panel-head">
+            <h2 id="cfPanelTitle">New category</h2>
+            <a class="btn btn-outline btn-sm" href="categories.html">← Back to Categories</a>
+          </div>
+          <div class="panel-body">
+
+            <form id="categoryForm" class="form-grid">
+
+              <div class="field field-full">
+                <label for="cfName">Category Name *</label>
+                <input id="cfName" type="text" required placeholder="e.g. Power Banks" autocomplete="off" />
+              </div>
+
+              <div class="field">
+                <label for="cfSlug">Slug</label>
+                <input id="cfSlug" type="text" disabled placeholder="auto-generated from name" autocomplete="off" />
+                <p class="form-note" style="margin-top:6px;">Used in the shop web address (e.g. shop.html?cat=power-banks). Generated automatically.</p>
+              </div>
+
+              <div class="field">
+                <label for="cfSortOrder">Sort Order</label>
+                <input id="cfSortOrder" type="number" min="0" step="1" placeholder="e.g. 7" />
+                <p class="form-note" style="margin-top:6px;">Lower numbers appear first in the shop filter list.</p>
+              </div>
+
+              <div class="field field-full">
+                <label for="cfDesc">Description</label>
+                <input id="cfDesc" type="text" placeholder="Optional short description of this category" />
+              </div>
+
+              <div class="field field-full">
+                <label for="cfStatus">Status</label>
+                <select id="cfStatus">
+                  <option value="true">Active — visible in shop filters</option>
+                  <option value="false">Inactive — hidden from shop</option>
+                </select>
+              </div>
+
+              <div class="field-full form-actions">
+                <button class="btn btn-dark" type="submit" id="cfSubmit">Add Category</button>
+                <a class="btn btn-outline" href="categories.html">Cancel</a>
+                <p id="cfNote" class="form-note" aria-live="polite"></p>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/admin.js"></script>
+  <script src="../assets/js/category-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <meta name="description" content="Repair management — A to Z Mobile Accessories admin." />
+  <title>Repairs — A to Z Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-page="repairs">
+
+  <div class="admin-shell">
+    <aside class="admin-side">
+      <a class="brand" href="../index.html">
+        <img class="brand-logo" src="../logo.png" alt="A to Z Mobile Accessories">
+      </a>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a href="index.html" data-nav="dashboard">Dashboard</a>
+        <a href="products.html" data-nav="products">Products</a>
+        <a href="categories.html" data-nav="categories">Categories</a>
+        <a href="inventory.html" data-nav="inventory">Inventory</a>
+        <a href="repairs.html" data-nav="repairs" class="active">Repairs</a>
+        <a href="approvals.html" data-nav="approvals">Approvals</a>
+        <a href="audit-log.html" data-nav="audit">Audit Log</a>
+        <a href="admins.html" data-nav="admins">Admins</a>
+      </nav>
+      <a class="admin-logout" href="login.html">Logout</a>
+    </aside>
+
+    <div class="admin-main">
+      <div class="admin-topbar">
+        <h1>Repairs</h1>
+        <div class="admin-user">
+          <span class="admin-avatar">WO</span>
+          <span>Web Owner<br><small>demo session</small></span>
+        </div>
+      </div>
+
+      <main class="admin-content">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Repair jobs</h2>
+            <div class="admin-actions">
+              <label class="search-box" style="width:min(280px,100%);">
+                <span class="sr-only">Search repairs</span>
+                <input type="search" placeholder="Search job, item or customer…" data-table-search="#repairsTable" />
+                <span class="search-icon">⌕</span>
+              </label>
+              <a class="btn btn-dark btn-sm" href="repair-form.html">New Repair Job</a>
+            </div>
+          </div>
+
+          <div class="panel-body" style="padding-bottom:0;">
+            <div class="category-list" style="border-bottom:0;padding-bottom:12px;">
+              <button class="category-btn active" data-status="all" type="button">All</button>
+              <button class="category-btn" data-status="received" type="button">Received</button>
+              <button class="category-btn" data-status="checking" type="button">Checking</button>
+              <button class="category-btn" data-status="repairing" type="button">Repairing</button>
+              <button class="category-btn" data-status="ready" type="button">Ready</button>
+              <button class="category-btn" data-status="delivered" type="button">Delivered</button>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="admin-table" id="repairsTable">
+              <thead>
+                <tr>
+                  <th>Job</th><th>Item</th><th>Customer</th><th>Phone</th><th>Status</th><th>Received</th><th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td colspan="7" class="form-note" style="padding:16px;">Loading repair jobs…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/js/supabase.js"></script>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
