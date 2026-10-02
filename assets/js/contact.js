@@ -20,13 +20,19 @@
     button.disabled = true;
     note.textContent = "Sending your enquiry…";
     const email = formData.get("email").trim();
-    const { error } = await a2zSupabase.from("enquiries").insert({
+    const payload = {
       customer_name: formData.get("name").trim(),
       customer_phone: formData.get("phone").trim(),
-      customer_email: email || null,
       subject: formData.get("subject"),
       message: formData.get("message").trim() || null,
-    });
+    };
+    if (email) payload.customer_email = email;
+    let { error } = await a2zSupabase.from("enquiries").insert(payload);
+    if (error && /customer_email/.test(error.message)) {
+      // customer_email column not added in Supabase yet — save without it rather than lose the enquiry.
+      delete payload.customer_email;
+      ({ error } = await a2zSupabase.from("enquiries").insert(payload));
+    }
     button.disabled = false;
     if (error) {
       note.textContent = a2zSupabaseError(error);
