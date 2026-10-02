@@ -19,9 +19,11 @@
     const formData = new FormData(form);
     button.disabled = true;
     note.textContent = "Sending your enquiry…";
+    const email = formData.get("email").trim();
     const { error } = await a2zSupabase.from("enquiries").insert({
       customer_name: formData.get("name").trim(),
       customer_phone: formData.get("phone").trim(),
+      customer_email: email || null,
       subject: formData.get("subject"),
       message: formData.get("message").trim() || null,
     });

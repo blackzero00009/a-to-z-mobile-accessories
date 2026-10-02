@@ -4,19 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <meta name="description" content="Repair detail — A to Z Mobile Accessories admin." />
-  <title>Repair — A to Z Admin</title>
+  <meta name="description" content="Enquiry detail — A to Z Mobile Accessories admin." />
+  <title>Enquiry — A to Z Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../logo.png">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <style>
-    .status-form { display: grid; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
-    .status-form textarea { min-height: 60px; resize: vertical; font-family: inherit; }
-  </style>
 </head>
-<body data-page="repair-detail">
+<body data-page="enquiry-detail">
 
   <div class="admin-shell">
     <aside class="admin-side">
@@ -29,8 +25,8 @@
         <a href="products.html" data-nav="products">Products</a>
         <a href="categories.html" data-nav="categories">Categories</a>
         <a href="inventory.html" data-nav="inventory">Inventory</a>
-        <a href="repairs.html" data-nav="repairs" class="active">Repairs</a>
-        <a href="enquiries.html" data-nav="enquiries">Enquiries</a>
+        <a href="repairs.html" data-nav="repairs">Repairs</a>
+        <a href="enquiries.html" data-nav="enquiries" class="active">Enquiries</a>
         <a href="approvals.html" data-nav="approvals">Approvals</a>
         <a href="audit-log.html" data-nav="audit">Audit Log</a>
         <a href="admins.html" data-nav="admins">Admins</a>
@@ -40,15 +36,15 @@
 
     <div class="admin-main">
       <div class="admin-topbar">
-        <h1>Repair <span id="rdJobNumber" style="color:var(--coral);"></span></h1>
+        <h1>Enquiry</h1>
         <div class="admin-user">
           <span class="admin-avatar">…</span>
           <span>Loading…</span>
         </div>
       </div>
 
-      <main class="admin-content" id="rdRoot">
-        <div class="panel"><div class="panel-body"><p class="form-note">Loading repair job…</p></div></div>
+      <main class="admin-content" id="edRoot">
+        <div class="panel"><div class="panel-body"><p class="form-note">Loading enquiry…</p></div></div>
       </main>
     </div>
   </div>
@@ -57,6 +53,6 @@
   <script src="../assets/js/supabase.js"></script>
   <script src="../assets/js/data.js"></script>
   <script src="../assets/js/admin.js"></script>
-  <script src="../assets/js/repair-detail.js"></script>
+  <script src="../assets/js/enquiry-detail.js"></script>
 </body>
 </html>

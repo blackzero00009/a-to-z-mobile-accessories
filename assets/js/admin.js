@@ -168,6 +168,23 @@
       if (data) renderRows("#repairsTable tbody", repairRows(data));
       return;
     }
+    if (page === "enquiries") {
+      const { data, error } = await a2zSupabase.from("enquiries").select("id, customer_name, customer_phone, customer_email, subject, status, created_at").order("created_at", { ascending: false });
+      if (error) {
+        renderRows("#enquiriesTable tbody", `<tr><td colspan="7" class="form-note" style="padding:16px;">Could not load enquiries (${a2zEscape(error.message)}). If this mentions a missing column, run supabase/migrations/20261002_enquiry_status.sql in the Supabase SQL Editor.</td></tr>`);
+        return;
+      }
+      if (data) renderRows("#enquiriesTable tbody", data.map((enquiry) => `<tr data-status="${a2zEscape(enquiry.status.toLowerCase())}">
+        <td>${a2zEscape(a2zFormatDate(enquiry.created_at, { day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit" }))}</td>
+        <td class="row-title">${a2zEscape(enquiry.customer_name)}</td>
+        <td>${a2zEscape(enquiry.customer_phone)}</td>
+        <td>${a2zEscape(enquiry.customer_email || "—")}</td>
+        <td>${a2zEscape(enquiry.subject)}</td>
+        <td><span class="badge ${enquiry.status === "NEW" ? "badge-received" : enquiry.status === "IN PROGRESS" ? "badge-repairing" : "badge-delivered"}">${a2zEscape(enquiry.status)}</span></td>
+        <td><a href="enquiry-detail.html?id=${encodeURIComponent(enquiry.id)}">Open</a></td>
+      </tr>`).join("") || '<tr><td colspan="7" class="form-note" style="padding:16px;">No enquiries yet.</td></tr>');
+      return;
+    }
     if (page === "categories") {
       const { data } = await a2zSupabase.from("categories").select("id, name, slug, sort_order, is_active, products(count)").order("sort_order");
       if (data) renderRows("#categoriesTable tbody", data.map((category) => `<tr><td>${category.sort_order ?? "—"}</td><td class="row-title">${a2zEscape(category.name)}</td><td>${a2zEscape(category.slug)}</td><td>${category.products?.[0]?.count || 0}</td><td><span class="badge ${category.is_active ? "badge-instock" : "badge-cancelled"}">${category.is_active ? "Active" : "Inactive"}</span></td><td class="row-actions"><a class="btn btn-outline btn-sm" href="category-form.html?id=${encodeURIComponent(category.id)}">Edit</a></td></tr>`).join(""));
@@ -246,11 +263,12 @@
       }
     });
 
-    if (page === "repairs") {
+    if (page === "repairs" || page === "enquiries") {
+      const tableSelector = page === "repairs" ? "#repairsTable" : "#enquiriesTable";
       document.querySelectorAll(".category-btn[data-status]").forEach((chip) => {
         chip.addEventListener("click", () => {
           document.querySelectorAll(".category-btn[data-status]").forEach((item) => item.classList.toggle("active", item === chip));
-          document.querySelectorAll("#repairsTable tbody tr").forEach((row) => { row.hidden = chip.dataset.status !== "all" && !row.dataset.status.startsWith(chip.dataset.status); });
+          document.querySelectorAll(`${tableSelector} tbody tr`).forEach((row) => { row.hidden = chip.dataset.status !== "all" && !row.dataset.status.startsWith(chip.dataset.status); });
         });
       });
     }

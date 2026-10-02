@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <meta name="description" content="Inventory management — A to Z Mobile Accessories admin." />
-  <title>Inventory — A to Z Admin</title>
+  <meta name="description" content="Customer enquiries — A to Z Mobile Accessories admin." />
+  <title>Enquiries — A to Z Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../logo.png">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body data-page="inventory">
+<body data-page="enquiries">
 
   <div class="admin-shell">
     <aside class="admin-side">
@@ -24,9 +24,9 @@
         <a href="posters.html" data-nav="posters">Posters</a>
         <a href="products.html" data-nav="products">Products</a>
         <a href="categories.html" data-nav="categories">Categories</a>
-        <a href="inventory.html" data-nav="inventory" class="active">Inventory</a>
+        <a href="inventory.html" data-nav="inventory">Inventory</a>
         <a href="repairs.html" data-nav="repairs">Repairs</a>
-        <a href="enquiries.html" data-nav="enquiries">Enquiries</a>
+        <a href="enquiries.html" data-nav="enquiries" class="active">Enquiries</a>
         <a href="approvals.html" data-nav="approvals">Approvals</a>
         <a href="audit-log.html" data-nav="audit">Audit Log</a>
         <a href="admins.html" data-nav="admins">Admins</a>
@@ -36,7 +36,7 @@
 
     <div class="admin-main">
       <div class="admin-topbar">
-        <h1>Inventory</h1>
+        <h1>Enquiries</h1>
         <div class="admin-user">
           <span class="admin-avatar">WO</span>
           <span>Web Owner<br><small>demo session</small></span>
@@ -46,33 +46,35 @@
       <main class="admin-content">
         <div class="panel">
           <div class="panel-head">
-            <h2>Stock levels</h2>
-            <label class="search-box" style="width:min(300px,100%);">
-              <span class="sr-only">Search inventory</span>
-              <input type="search" id="inventorySearch" placeholder="Search products…" />
+            <h2>Customer enquiries</h2>
+            <label class="search-box" style="width:min(280px,100%);">
+              <span class="sr-only">Search enquiries</span>
+              <input type="search" placeholder="Search name, phone or subject…" data-table-search="#enquiriesTable" />
               <span class="search-icon">⌕</span>
             </label>
           </div>
+
           <div class="panel-body" style="padding-bottom:0;">
-            <div class="category-list" id="inventoryCategoryList" style="border-bottom:0;padding-bottom:12px;">
-              <button class="category-btn active" data-category="all" type="button">All</button>
+            <div class="category-list" style="border-bottom:0;padding-bottom:12px;">
+              <button class="category-btn active" data-status="all" type="button">All</button>
+              <button class="category-btn" data-status="new" type="button">New</button>
+              <button class="category-btn" data-status="in progress" type="button">In Progress</button>
+              <button class="category-btn" data-status="resolved" type="button">Resolved</button>
             </div>
           </div>
+
           <div class="table-wrap">
-            <table class="admin-table" id="inventoryTable">
+            <table class="admin-table" id="enquiriesTable">
               <thead>
                 <tr>
-                  <th>Product</th><th>SKU</th><th>Current Stock</th><th>Low Stock At</th><th>Stock Status</th><th>Popular this week</th>
+                  <th>Received</th><th>Name</th><th>Phone</th><th>Email</th><th>Subject</th><th>Status</th><th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td colspan="6" class="form-note" style="padding:16px;">Loading inventory…</td></tr>
+                <tr><td colspan="7" class="form-note" style="padding:16px;">Loading enquiries…</td></tr>
               </tbody>
             </table>
           </div>
-          <p class="form-note" style="padding:12px 18px;margin:0;">
-            Use the stepper to adjust stock. Star a product to show it in the "Popular this week" section on the homepage.
-          </p>
         </div>
       </main>
     </div>
