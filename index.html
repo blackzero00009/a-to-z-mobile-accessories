@@ -38,7 +38,14 @@
 
   <main>
 
-    <section class="hero">
+    <section class="poster-carousel" id="posterCarousel" aria-label="Featured posters">
+      <div class="carousel-track" id="carouselTrack"></div>
+      <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous poster">&#8249;</button>
+      <button class="carousel-arrow carousel-next" type="button" aria-label="Next poster">&#8250;</button>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+    <section class="hero" id="heroFallback">
       <div class="hero-panel hero-panel-left">
         <div class="eyebrow">Mobile • Laptop • Accessories</div>
         <h1>Everything your<br><em>device needs.</em></h1>

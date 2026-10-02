@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <meta name="description" content="Admin user management — A to Z Mobile Accessories admin." />
-  <title>Admins — A to Z Admin</title>
+  <meta name="description" content="Poster management — A to Z Mobile Accessories admin." />
+  <title>Posters — A to Z Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../logo.png">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body data-page="admins">
+<body data-page="posters">
 
   <div class="admin-shell">
     <aside class="admin-side">
@@ -21,42 +21,42 @@
       </a>
       <nav class="admin-nav" aria-label="Admin navigation">
         <a href="index.html" data-nav="dashboard">Dashboard</a>
-        <a href="posters.html" data-nav="posters">Posters</a>
+        <a href="posters.html" data-nav="posters" class="active">Posters</a>
         <a href="products.html" data-nav="products">Products</a>
         <a href="categories.html" data-nav="categories">Categories</a>
         <a href="inventory.html" data-nav="inventory">Inventory</a>
         <a href="repairs.html" data-nav="repairs">Repairs</a>
         <a href="approvals.html" data-nav="approvals">Approvals</a>
         <a href="audit-log.html" data-nav="audit">Audit Log</a>
-        <a href="admins.html" data-nav="admins" class="active">Admins</a>
+        <a href="admins.html" data-nav="admins">Admins</a>
       </nav>
       <a class="admin-logout" href="login.html">Logout</a>
     </aside>
 
     <div class="admin-main">
       <div class="admin-topbar">
-        <h1>Admins</h1>
+        <h1>Posters</h1>
         <div class="admin-user">
-          <span class="admin-avatar">WO</span>
-          <span>Web Owner<br><small>demo session</small></span>
+          <span class="admin-avatar">…</span>
+          <span>Loading…</span>
         </div>
       </div>
 
       <main class="admin-content">
         <div class="panel">
           <div class="panel-head">
-            <h2>Admin users</h2>
-            <a class="btn btn-dark btn-sm" href="admin-form.html">Add Admin</a>
+            <h2>Homepage carousel posters</h2>
+            <a class="btn btn-dark btn-sm" href="poster-form.html">Add Poster</a>
           </div>
           <div class="table-wrap">
-            <table class="admin-table" id="adminsTable">
+            <table class="admin-table" id="postersTable">
               <thead>
                 <tr>
-                  <th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Joined</th><th>Actions</th>
+                  <th>Order</th><th>Image</th><th>Item Name</th><th>Price</th><th>Status</th><th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td colspan="6" style="text-align:center;padding:24px;">Loading admins…</td></tr>
+                <tr><td colspan="6" style="text-align:center;padding:24px;">Loading posters…</td></tr>
               </tbody>
             </table>
           </div>
