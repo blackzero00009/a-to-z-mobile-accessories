@@ -110,7 +110,7 @@
   async function loadPosters() {
     const { data, error } = await a2zSupabase
       .from("posters")
-      .select("id, image_url, item_name, price, product_id")
+      .select("id, image_url, item_name, price, product_id, product:products(slug)")
       .eq("is_active", true)
       .order("sort_order");
     if (error || !data?.length) {
@@ -126,7 +126,7 @@
       const priceHtml = poster.price != null
         ? `<span class="carousel-price">₹${Number(poster.price).toLocaleString("en-IN")}</span>`
         : "";
-      const link = poster.product_id ? `product.html?id=${encodeURIComponent(poster.product_id)}` : "shop.html";
+      const link = poster.product?.slug ? `product.html?p=${encodeURIComponent(poster.product.slug)}` : "shop.html";
       return `<a class="carousel-slide" href="${link}">
         <img src="${a2zEscape(poster.image_url)}" alt="${a2zEscape(poster.item_name || "")}" loading="lazy">
         <div class="carousel-overlay">
