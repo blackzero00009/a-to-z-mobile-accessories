@@ -1,11 +1,18 @@
 (function () {
   const grid = document.getElementById("featuredGrid");
   if (grid && a2zSupabase) {
+    function artHtml(product) {
+      if (product.imageUrl) {
+        return `<div class="product-art product-art--img"><img src="${a2zEscape(product.imageUrl)}" alt="${a2zEscape(product.name)}" loading="lazy"></div>`;
+      }
+      return `<div class="product-art ${a2zEscape(product.art)}"><span class="art-icon">${a2zEscape(product.icon)}</span><span class="art-code">${a2zEscape(product.code)}</span></div>`;
+    }
+
     function cardHtml(product) {
       return `
         <article class="product-card">
           <a href="product.html?p=${encodeURIComponent(product.slug)}" aria-label="View ${a2zEscape(product.name)}">
-            <div class="product-art ${a2zEscape(product.art)}"><span class="art-icon">${a2zEscape(product.icon)}</span><span class="art-code">${a2zEscape(product.code)}</span></div>
+            ${artHtml(product)}
           </a>
           <div class="product-card-body">
             <span class="card-kicker">${a2zEscape(product.kicker)}</span>
