@@ -65,6 +65,7 @@
         <td class="row-title">${a2zEscape(product.name)}</td><td>${a2zEscape(product.sku)}</td>
         <td><span class="stepper" data-product-id="${product.id}"><button type="button" data-step="-1" aria-label="Decrease stock">−</button><output>${product.stock}</output><button type="button" data-step="1" aria-label="Increase stock">+</button></span></td>
         <td>${product.lowStockAt ?? "—"}</td><td><span class="badge ${stock.badge}">${a2zEscape(stock.text)}</span></td>
+        <td><button type="button" class="star-toggle${product.featured ? " active" : ""}" data-feature-toggle="${product.id}" aria-pressed="${product.featured ? "true" : "false"}" aria-label="Toggle popular this week" title="Show in Popular this week on homepage">★</button></td>
       </tr>`;
     }).join("");
   }
@@ -221,6 +222,18 @@
         const { error } = await a2zSupabase.from("products").update({ inventory_quantity: next }).eq("id", stepper.dataset.productId);
         step.disabled = false;
         if (!error) output.textContent = next;
+        return;
+      }
+      const featureToggle = event.target.closest("[data-feature-toggle]");
+      if (featureToggle) {
+        const next = featureToggle.getAttribute("aria-pressed") !== "true";
+        featureToggle.disabled = true;
+        const { error } = await a2zSupabase.from("products").update({ is_featured: next }).eq("id", featureToggle.dataset.featureToggle);
+        featureToggle.disabled = false;
+        if (!error) {
+          featureToggle.classList.toggle("active", next);
+          featureToggle.setAttribute("aria-pressed", String(next));
+        }
         return;
       }
       const approval = event.target.closest("[data-approval-action]");

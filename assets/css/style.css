@@ -1715,6 +1715,37 @@ h2 em {
   font-size: 13px;
 }
 
+/* star toggle (inventory — popular this week) */
+
+.star-toggle {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--line);
+  cursor: pointer;
+  font-size: 17px;
+  line-height: 1;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.star-toggle:hover {
+  border-color: var(--peach);
+  color: var(--peach);
+}
+
+.star-toggle.active {
+  background: var(--peach);
+  border-color: var(--peach);
+  color: var(--ink);
+}
+
+.star-toggle:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1000px) {
